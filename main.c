@@ -1,7 +1,24 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 void clear(){
 	system("clear");
+}
+
+void sleep(int a){
+	time_t t1,t2;
+	t1 = time(NULL);
+    t2 = time(NULL);
+	while ((t2 - t1)*1000 < a)
+	t2 = time(NULL);
+}
+
+int aleatorio(){
+	int numero;
+	srand(time(NULL));
+	numero = 1 + rand() % ((4 + 1) - 1);
+	return numero;
 }
 
 int main(){
@@ -42,8 +59,6 @@ int main(){
 	pikachu.velocidad = 35;
 	pikachu.precision = 86;
 
-
-
 	printf("\ninicia\n");
 	
 	int turno;
@@ -79,7 +94,7 @@ int main(){
 			turno = 1;
 		}
 		else{
-			int opcionAzul = 3;
+			int opcionAzul = (aleatorio());
 			
 			if (opcionAzul == 1){ ataqueA = pikachu.ataque1; } 
 			else if (opcionAzul == 2){ ataqueA = pikachu.ataque2; }
